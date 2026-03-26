@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.apexpdl</groupId>
+  <artifactId>gwt-i18n-table</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>war</packaging>
+
+  <name>GWT i18n Table — App Inventor Strings Editor Prototype</name>
+  <description>
+    Prototype for the App Inventor Strings Editor component.
+    Demonstrates the GWT CellTable-based UI with language sidebar,
+    inline editing, translation coverage tracking, and JSON serialization.
+    Built as part of GSoC 2026 proposal for MIT App Inventor i18n support.
+  </description>
+
+  <properties>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <gwt.version>2.10.0</gwt.version>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.gwtproject</groupId>
+        <artifactId>gwt</artifactId>
+        <version>${gwt.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.gwtproject</groupId>
+      <artifactId>gwt-user</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.gwtproject</groupId>
+      <artifactId>gwt-dev</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- JSON support -->
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.10.1</version>
+    </dependency>
+
+    <!-- Testing -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.2</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>net.ltgt.gwt.maven</groupId>
+        <artifactId>gwt-maven-plugin</artifactId>
+        <version>1.0.0</version>
+        <extensions>true</extensions>
+        <configuration>
+          <moduleName>com.apexpdl.i18ntable.I18nTable</moduleName>
+          <moduleShortName>i18ntable</moduleShortName>
+          <failOnError>true</failOnError>
+          <compilerArgs>
+            <arg>-generateJsInteropExports</arg>
+          </compilerArgs>
+          <devmodeArgs>
+            <arg>-bindAddress</arg>
+            <arg>0.0.0.0</arg>
+          </devmodeArgs>
+          <codeserverArgs>
+            <arg>-bindAddress</arg>
+            <arg>0.0.0.0</arg>
+          </codeserverArgs>
+          <launcherDir>${project.build.directory}/${project.build.finalName}</launcherDir>
+        </configuration>
+        <executions>
+          <execution>
+            <id>gwt-compile</id>
+            <goals>
+              <goal>compile</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>
