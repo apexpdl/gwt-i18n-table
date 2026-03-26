@@ -129,4 +129,4 @@ Building this prototype taught me the hard parts:
 
 ## Author
 
-Apex Poudel — [github.com/apexpdl](https://github.com/apexpdl) — GSoC 2026 applicant, MIT App Inventor
+Apex Poudel — [github.com/apexpdl](https://github.com/apexpdl) 
